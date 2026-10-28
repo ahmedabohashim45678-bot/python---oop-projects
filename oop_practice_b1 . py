@@ -1,0 +1,58 @@
+class Student:
+    def __init__(self,name):
+        self.name=name
+    def display(self):
+        print(f"name:{self.name}")
+B3=Student("Ahmed")
+B3.display()
+
+
+
+class BankAcount:
+    def __init__(self,owner_name,balance):
+        self.owner_name=owner_name
+        self.__balance=balance
+    def get_balance(self):
+        return self.__balance
+    def set_balance(self,new_balance):
+        self.__balance=new_balance
+B3=BankAcount("Ahmed",1000)
+print(B3.get_balance())
+B3.set_balance(1500)
+print(B3.get_balance())
+
+
+from abc import ABC,abstractmethod
+class Notification(ABC):
+    @abstractmethod
+    def send (self):
+        pass
+class EmailNotification(Notification):
+    def send (self):
+        print("sending_email")
+email1=EmailNotification()
+email1.send()
+
+
+
+from abc import ABC,abstractmethod
+class Student(ABC):
+    @abstractmethod
+    def check_grade(self):
+        pass
+class GradeEvaluator(Student):
+    def __init__(self,grade):
+        self.grade=grade
+    def check_grade(self):
+        if  self.grade >=90:
+            print("Excellent")
+        elif self.grade >=75:
+            print("Good")
+        else:
+            print("Needs Improvement")
+B3=GradeEvaluator(80)
+B3.check_grade()
+B3=GradeEvaluator(120)
+B3.check_grade()
+B3=GradeEvaluator(50)
+B3.check_grade()
